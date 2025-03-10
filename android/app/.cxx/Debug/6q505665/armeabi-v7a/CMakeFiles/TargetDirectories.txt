@@ -1,0 +1,2 @@
+C:/Users/ches4/Documents/flutter projects/portfolio ches/Ches_portfolio-/android/app/.cxx/Debug/6q505665/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/ches4/Documents/flutter projects/portfolio ches/Ches_portfolio-/android/app/.cxx/Debug/6q505665/armeabi-v7a/CMakeFiles/rebuild_cache.dir
