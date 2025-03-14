@@ -161,25 +161,319 @@ class _DesktopLayoutState extends State<DesktopLayout> {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Stack(
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
               children: [
-                background(initializeVideoPlayerFuture: _initializeVideoPlayerFuture, height: height, width: width),
-                SizedBox(
-                    height: height,
-                    width: width,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
 
-                        StatefulBuilder(
-                          builder: (context,screenState) {
-                            return Row(
+                Stack(
+                  children: [
+                    background(initializeVideoPlayerFuture: _initializeVideoPlayerFuture, height: height, width: width),
+                    SizedBox(
+                        height: height,
+                        width: width,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+               SizedBox(height: height*.3,),
+                            Row(
+                              children: [
+                                Expanded(flex: 3,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      RichText(
+                                        text: TextSpan(
+                                          text: 'Hello ',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                              fontSize: width * .03),
+                                        ),
+                                      ),
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          RichText(
+                                            text: TextSpan(
+                                              text: 'This ',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white,
+                                                  fontSize: width * .025),
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                    text: 'is',
+                                                    style: TextStyle(
+                                                        fontWeight: FontWeight.bold,
+                                                        color: Colors.white,
+                                                        fontSize: width * .015)),
+                                              ],
+                                            ),
+                                          ),
+                                          Text(' Cheswin Raj!',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.yellow,
+                                                  fontSize: width * .02))
+                                              .animate(
+                                              effects: [
+                                                ShimmerEffect( colors: [Colors.blue, Colors.purple], // Gradient colors
+                                                )
+                                              ],
+                                              onPlay: (controller) => controller.repeat(
+                                                  reverse: true,
+                                                  period: Duration(seconds: 3)))
+                                        ],
+                                      ),
+
+                                          Row(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                            ShaderMask(
+                                              shaderCallback: (Rect bounds) {
+                                                return LinearGradient(
+                                                  colors: [Colors.blue, Colors.purple], // Gradient colors
+                                                  begin: Alignment.topLeft,
+                                                  end: Alignment.bottomRight,
+                                                ).createShader(bounds);
+                                              },
+                                              child: Text(
+                                                 'Flutter  ',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                    fontSize: width * .025),),
+                                            ),
+                                                Text(
+                                                  'Developer',
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      color: Colors.white,
+                                                      fontSize: width * .015),)
+                                            ]),
+
+
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          RichText(
+                                            text: TextSpan(
+                                              text: 'I specialize in building seamless  ',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white,
+                                                  fontSize: width * .01),
+                                            ),
+                                          ),
+                                          Text('Android ',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.yellowAccent,
+                                                  fontSize: width * .013))
+                                              .animate(
+                                            // effects: [ShimmerEffect(color: Colors.black)],
+                                              onPlay: (controller) => controller.repeat(
+                                                  reverse: true,
+                                                  period: Duration(seconds: 3)))
+                                              .fadeOut(curve: Curves.easeIn),
+                                          Text(',',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white,
+                                                  fontSize: width * .01)),
+                                          Text('iOS ',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.yellowAccent,
+                                                  fontSize: width * .013))
+                                              .animate(
+                                            // effects: [ShimmerEffect(color: Colors.black)],
+                                              onPlay: (controller) => controller.repeat(
+                                                  reverse: true,
+                                                  period: Duration(seconds: 4)))
+                                              .fadeOut(curve: Curves.easeIn),
+                                          Text('and ',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white,
+                                                  fontSize: width * .01)),
+                                          Text('Web',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.yellowAccent,
+                                                  fontSize: width * .013))
+                                              .animate(
+                                            // effects: [ShimmerEffect(color: Colors.black)],
+                                              onPlay: (controller) => controller.repeat(
+                                                  reverse: true,
+                                                  period: Duration(seconds: 5)))
+                                              .fadeOut(curve: Curves.easeIn),
+                                          Text(' applications using Flutter.  ',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white,
+                                                  fontSize: width * .01)),
+                                        ],
+                                      ),
+                                      RichText(
+                                        text: TextSpan(
+                                            text: 'With ',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                                fontSize: width * .01),
+                                            children: [
+                                              TextSpan(
+                                                  text: '2',
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      color: Colors.yellow,
+                                                      fontSize: width * .01)),
+                                              TextSpan(
+                                                  text:
+                                                  ' years of experience, I create high-performance and visually appealing apps.',
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      color: Colors.white,
+                                                      fontSize: width * .01)),
+                                            ]),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Expanded(flex:2,child:
+                                Container(color: Colors.transparent,
+                                  child: Column(
+
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        // crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(),
+                                          StatefulBuilder(
+                                              builder: (context,setStates) {
+                                                return Padding(
+                                                  padding: const EdgeInsets.only(right: 50),
+                                                  child: Column(
+                                                    children: [
+                                                      GestureDetector(
+                                                        onTap: (){
+                                                          _launchUrl("https://github.com/CheswinRaj");
+                                                        },
+                                                        child: Padding(
+                                                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                                          child: MouseRegion(
+                                                            onEnter: (_) => setStates(() => iconClr1 = true), // When mouse enters
+                                                            onExit: (_) => setStates(() => iconClr1 = false),
+                                                            child: SizedBox(
+                                                              height: height*.035,
+                                                              width: height*.035,
+                                                              child: SvgPicture.asset(
+                                                                "assets/svg/git.svg",
+                                                                colorFilter:  ColorFilter.mode(iconClr1?Colors.red:Colors.white, BlendMode.srcIn),
+                                                                semanticsLabel: 'Red dash paths',
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      GestureDetector(
+                                                        onTap: (){
+                                                          _launchUrl("https://www.linkedin.com/in/cheswin-raj-9352941b2/");
+                                                        },
+                                                        child: Padding(
+                                                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                                          child: MouseRegion(
+                                                            onEnter: (_) => setStates(() => iconClr2 = true), // When mouse enters
+                                                            onExit: (_) => setStates(() => iconClr2 = false),
+                                                            child: SizedBox(
+                                                              height: height*.035,
+                                                              width: height*.035,
+                                                              child: SvgPicture.asset(
+                                                                "assets/svg/linkedin.svg",
+                                                                colorFilter:  ColorFilter.mode(iconClr2?Colors.blue:Colors.white, BlendMode.srcIn),
+                                                                semanticsLabel: 'Red dash paths',
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      GestureDetector(
+                                                        onTap: (){
+                                                          _launchUrl("https://github.com/Cheswin");
+                                                        },
+                                                        child: Padding(
+                                                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                                          child: MouseRegion(
+                                                            onEnter: (_) => setStates(() => iconClr3 = true), // When mouse enters
+                                                            onExit: (_) => setStates(() => iconClr3 = false), // When mouse exits
+                                                            child: SizedBox(
+                                                              height: height*.035,
+                                                              width: height*.035,
+                                                              child: SvgPicture.asset(
+                                                                "assets/svg/git.svg",
+                                                                colorFilter:  ColorFilter.mode(iconClr3?Colors.red:Colors.white, BlendMode.srcIn),
+                                                                semanticsLabel: 'Red dash paths',
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              }
+                                          )
+
+
+                                        ],)
+                                    ],),))
+                              ],
+                            ),
+                          ],
+                        )),
+                  ],
+                ),
+                Container(
+                  color: Colors.blue,
+                  height: height,
+                  width: width,
+                  child: Center(child: Text("tab"),
+
+                  ),),            ],
+            ),
+          ),
+          StatefulBuilder(
+              builder: (context,screenState) {
+                return Padding(
+                  padding:  EdgeInsets.only(top:height*.02,right: 20,left: 20 ),
+                  child: CustomPaint(
+                    size: Size(100, 100),
+                    painter: GradientBorderPainter(),
+                    child: Container(
+                      height: height*.05,
+                                    margin: EdgeInsets.all(1), // To prevent the inner black container from covering the border
+                                    decoration: BoxDecoration(
+                                    // color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(15)),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding:  EdgeInsets.only(top: height*.02,bottom:height*.3,right: width*.02,left: width*.04),
+                                  padding:  EdgeInsets.only(
+                                      top: 0,bottom:0,right: width*.02,left: width*.04),
                                   child: MouseRegion(
                                     onEnter: (_) => screenState(() => mainHead1 = true), // When hovered
                                     onExit: (_) => screenState(() => mainHead1 = false),
@@ -188,19 +482,20 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                                         Text(
                                           'Home ',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                              decoration: mainHead1?TextDecoration.underline:null, // Adds underline
-                                              decorationColor: Colors.red, // Underline color
-                                              decorationThickness: 5, // Underline thickness
-                                              fontSize: width * .01),
+                                            fontWeight: FontWeight.bold,
+                                            color:mainHead1?Colors.red: Colors.white,
+                                            // decoration: mainHead1?TextDecoration.underline:null, // Adds underline
+                                            // decorationColor: Colors.red, // Underline color
+                                            // decorationThickness: 5, // Underline thickness
+                                            // fontSize: width * .01
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
                                 Padding(
-                                  padding:  EdgeInsets.only(top: height*.02,bottom:height*.3,right: width*.02),
+                                  padding:  EdgeInsets.only(top: 0,bottom:0,right: width*.02),
                                   child: MouseRegion(
                                     onEnter: (_) => screenState(() => mainHead2 = true), // When hovered
                                     onExit: (_) => screenState(() => mainHead2 = false),
@@ -209,19 +504,19 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                                         Text(
                                           'About',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                              decoration: mainHead2?TextDecoration.underline:null, // Adds underline
-                                              decorationColor: Colors.red, // Underline color
-                                              decorationThickness: 5, // Underline thickness
-                                              fontSize: width * .01),
+                                            fontWeight: FontWeight.bold,
+                                            color:mainHead2?Colors.red: Colors.white,                                    decoration: mainHead2?TextDecoration.underline:null, // Adds underline
+                                            // decorationColor: Colors.red, // Underline color
+                                            // decorationThickness: 5, // Underline thickness
+                                            // fontSize: width * .01
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
                                 Padding(
-                                  padding:  EdgeInsets.only(top: height*.02,bottom:height*.3,right: width*.02),
+                                  padding:  EdgeInsets.only(top: 0,bottom:0,right: width*.02),
                                   child: MouseRegion(
                                     onEnter: (_) => screenState(() => mainHead3 = true), // When hovered
                                     onExit: (_) => screenState(() => mainHead3 = false),
@@ -230,19 +525,19 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                                         Text(
                                           'Projects',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                              decoration: mainHead3?TextDecoration.underline:null, // Adds underline
-                                              decorationColor: Colors.red, // Underline color
-                                              decorationThickness: 5, // Underline thickness
-                                              fontSize: width * .01),
+                                            fontWeight: FontWeight.bold,
+                                            color:mainHead3?Colors.red: Colors.white,                                    decoration: mainHead3?TextDecoration.underline:null, // Adds underline
+                                            // decorationColor: Colors.red, // Underline color
+                                            // decorationThickness: 5, // Underline thickness
+                                            // fontSize: width * .01
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
                                 Padding(
-                                  padding:  EdgeInsets.only(top: height*.02,bottom:height*.3,right: width*.02),
+                                  padding:  EdgeInsets.only(top: 0,bottom:0,right: width*.02),
                                   child: MouseRegion(
                                     onEnter: (_) => screenState(() => mainHead4 = true), // When hovered
                                     onExit: (_) => screenState(() => mainHead4 = false),
@@ -251,19 +546,19 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                                         Text(
                                           'Contact',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                              decoration: mainHead4?TextDecoration.underline:null, // Adds underline
-                                              decorationColor: Colors.red, // Underline color
-                                              decorationThickness: 5, // Underline thickness
-                                              fontSize: width * .01),
+                                            fontWeight: FontWeight.bold,
+                                            color:mainHead4?Colors.red: Colors.white,                                    decoration: mainHead4?TextDecoration.underline:null, // Adds underline
+                                            // decorationColor: Colors.red, // Underline color
+                                            // decorationThickness: 5, // Underline thickness
+                                            // fontSize: width * .01
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
                                 Padding(
-                                  padding:  EdgeInsets.only(top: height*.02,bottom:height*.3,right: width*.02),
+                                  padding:  EdgeInsets.only(top:0,bottom:0,right: width*.02),
                                   child: MouseRegion(
                                     onEnter: (_) => screenState(() => mainHead5 = true), // When hovered
                                     onExit: (_) => screenState(() => mainHead5 = false),
@@ -272,285 +567,28 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                                         Text(
                                           'Resume',
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                              decoration: mainHead5?TextDecoration.underline:null, // Adds underline
-                                              decorationColor: Colors.red, // Underline color
-                                              decorationThickness: 5, // Underline thickness
-                                              fontSize: width * .01),
+                                            fontWeight: FontWeight.bold,
+                                            color:mainHead5?Colors.red: Colors.white,                                    decoration: mainHead5?TextDecoration.underline:null, // Adds underline
+                                            // decorationColor: Colors.red, // Underline color
+                                            // decorationThickness: 5, // Underline thickness
+                                            // fontSize: width * .01
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
                               ],
-                            );
-                          }
-                        ),
-
-                        Row(
-                          children: [
-                            Expanded(flex: 3,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  RichText(
-                                    text: TextSpan(
-                                      text: 'Hello ',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          fontSize: width * .03),
-                                    ),
-                                  ),
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      RichText(
-                                        text: TextSpan(
-                                          text: 'This ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                              fontSize: width * .025),
-                                          children: <TextSpan>[
-                                            TextSpan(
-                                                text: 'is',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.white,
-                                                    fontSize: width * .015)),
-                                          ],
-                                        ),
-                                      ),
-                                      Text(' Cheswin Raj!',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.yellow,
-                                              fontSize: width * .02))
-                                          .animate(
-                                          effects: [
-                                            ShimmerEffect(colors: [
-                                              Colors.yellowAccent,
-                                              Colors.red
-                                            ])
-                                          ],
-                                          onPlay: (controller) => controller.repeat(
-                                              reverse: true,
-                                              period: Duration(seconds: 3)))
-                                    ],
-                                  ),
-                                  RichText(
-                                    text: TextSpan(
-                                      text: 'Flutter  ',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.yellowAccent,
-                                          fontSize: width * .025),
-                                      children: <TextSpan>[
-                                        TextSpan(
-                                            text: 'Developer',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white,
-                                                fontSize: width * .015)),
-                                      ],
-                                    ),
-                                  ),
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      RichText(
-                                        text: TextSpan(
-                                          text: 'I specialize in building seamless  ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                              fontSize: width * .01),
-                                        ),
-                                      ),
-                                      Text('Android ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.yellowAccent,
-                                              fontSize: width * .013))
-                                          .animate(
-                                        // effects: [ShimmerEffect(color: Colors.black)],
-                                          onPlay: (controller) => controller.repeat(
-                                              reverse: true,
-                                              period: Duration(seconds: 3)))
-                                          .fadeOut(curve: Curves.easeIn),
-                                      Text(',',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                              fontSize: width * .01)),
-                                      Text('iOS ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.yellowAccent,
-                                              fontSize: width * .013))
-                                          .animate(
-                                        // effects: [ShimmerEffect(color: Colors.black)],
-                                          onPlay: (controller) => controller.repeat(
-                                              reverse: true,
-                                              period: Duration(seconds: 4)))
-                                          .fadeOut(curve: Curves.easeIn),
-                                      Text('and ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                              fontSize: width * .01)),
-                                      Text('Web',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.yellowAccent,
-                                              fontSize: width * .013))
-                                          .animate(
-                                        // effects: [ShimmerEffect(color: Colors.black)],
-                                          onPlay: (controller) => controller.repeat(
-                                              reverse: true,
-                                              period: Duration(seconds: 5)))
-                                          .fadeOut(curve: Curves.easeIn),
-                                      Text(' applications using Flutter.  ',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                              fontSize: width * .01)),
-                                    ],
-                                  ),
-                                  RichText(
-                                    text: TextSpan(
-                                        text: 'With ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white,
-                                            fontSize: width * .01),
-                                        children: [
-                                          TextSpan(
-                                              text: '2',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.yellow,
-                                                  fontSize: width * .01)),
-                                          TextSpan(
-                                              text:
-                                              ' years of experience, I create high-performance and visually appealing apps.',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white,
-                                                  fontSize: width * .01)),
-                                        ]),
-                                  ),
-                                ],
-                              ),
                             ),
-                            Expanded(flex:2,child:
-                            Container(color: Colors.transparent,
-                              child: Column(
-
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                // crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(),
-                                StatefulBuilder(
-                                    builder: (context,setStates) {
-                                      return Padding(
-                                        padding: const EdgeInsets.only(right: 50),
-                                        child: Column(
-                                          children: [
-                                            GestureDetector(
-                                              onTap: (){
-                                                _launchUrl("https://github.com/CheswinRaj");
-                                              },
-                                              child: Padding(
-                                                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                                child: MouseRegion(
-                                                  onEnter: (_) => setStates(() => iconClr1 = true), // When mouse enters
-                                                  onExit: (_) => setStates(() => iconClr1 = false),
-                                                  child: SizedBox(
-                                                    height: height*.035,
-                                                    width: height*.035,
-                                                    child: SvgPicture.asset(
-                                                      "assets/svg/git.svg",
-                                                      colorFilter:  ColorFilter.mode(iconClr1?Colors.red:Colors.white, BlendMode.srcIn),
-                                                      semanticsLabel: 'Red dash paths',
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            GestureDetector(
-                                              onTap: (){
-                                                _launchUrl("https://www.linkedin.com/in/cheswin-raj-9352941b2/");
-                                              },
-                                              child: Padding(
-                                                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                                child: MouseRegion(
-                                                  onEnter: (_) => setStates(() => iconClr2 = true), // When mouse enters
-                                                  onExit: (_) => setStates(() => iconClr2 = false),
-                                                  child: SizedBox(
-                                                    height: height*.035,
-                                                    width: height*.035,
-                                                    child: SvgPicture.asset(
-                                                      "assets/svg/linkedin.svg",
-                                                      colorFilter:  ColorFilter.mode(iconClr2?Colors.blue:Colors.white, BlendMode.srcIn),
-                                                      semanticsLabel: 'Red dash paths',
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            GestureDetector(
-                                              onTap: (){
-                                                _launchUrl("https://github.com/Cheswin");
-                                              },
-                                              child: Padding(
-                                                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                                child: MouseRegion(
-                                                  onEnter: (_) => setStates(() => iconClr3 = true), // When mouse enters
-                                                  onExit: (_) => setStates(() => iconClr3 = false), // When mouse exits
-                                                  child: SizedBox(
-                                                    height: height*.035,
-                                                    width: height*.035,
-                                                    child: SvgPicture.asset(
-                                                      "assets/svg/git.svg",
-                                                      colorFilter:  ColorFilter.mode(iconClr3?Colors.red:Colors.white, BlendMode.srcIn),
-                                                      semanticsLabel: 'Red dash paths',
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    }
-                                )
-
-
-                              ],)
-                            ],),))
                           ],
                         ),
-                      ],
-                    )),
-              ],
-            ),
-             Container(
-                color: Colors.blue,
-                height: height*.3,
-                width: width,
-              child: Center(child: Text("tab"),
-
-            ),),
-          ],
-        ),
+                      ),
+                    ),
+                  ),
+                );
+              }
+          ),
+        ],
       ),);
   }
 }
@@ -603,5 +641,36 @@ class background extends StatelessWidget {
         }
       },
     );
+  }
+}
+
+class GradientBorderPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()
+      ..shader = LinearGradient(
+        colors: [Colors.blue, Colors.purple], // Gradient colors
+      ).createShader(Rect.fromLTWH(0, 0, size.width, size.height))
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 3;
+
+    final Rect rect = Rect.fromLTWH(0, 0, size.width, size.height);
+
+    // Manually create a BorderRadius (with the same value for all corners)
+    final BorderRadius borderRadius = BorderRadius.circular(20);
+
+    // Convert BorderRadius to the top-left, top-right, bottom-left, bottom-right radius values
+    final Radius radius = borderRadius.topLeft;
+
+    // Create RRect using the radius for rounded corners
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(rect, radius),
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }
