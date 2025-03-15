@@ -452,43 +452,29 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                                             Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
                                           ],
                                         ),
-                                       Wrap(children: [
-                                         Container(
-                                           width: width*.05,
-                                           height: width*.05,
-                                           decoration: BoxDecoration(
-                                             image: DecorationImage(image: AssetImage("assets/image/flutter.jpg"),fit: BoxFit.cover),
-                                             color: Colors.white,borderRadius: BorderRadius.circular(20)),)
-                                       ],),
-                                        SizedBox(height:20),
-                                        Row(children: [
-                                          // Container(
-                                          //   decoration: BoxDecoration(color: Colors.purple),
-                                          // child: ,
-                                          // )
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(10), // Optional rounded edges
-                                              border: Border.all(
-                                                width: 3, // Border width
-                                                color: Colors.transparent, // Required for gradient
-                                              ),
-                                              gradient: LinearGradient(
-                                                colors: [Colors.purple, Colors.blue], // Gradient colors
-                                              ),
-                                            ),
-                                            child: Center(
-                                              child: Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
-                                                child: Text(
-                                                  "Hire Me",
-                                                  style: TextStyle(color: Colors.white),
-                                                ),
-                                              ),
-                                            ),
-                                          )
+                                       SizedBox(height: 30,),
+                                       Wrap(
+                                         spacing: 30,
+                                         runSpacing: 10,
+                                         children: [
+                                         SkillCard(width: width, height: height, name: "Flutter", image: "assets/image/flutter.jpg",),
+                                         SkillCard(width: width, height: height, name: "Dart", image: "assets/image/dart.png",),
+                                         SkillCard(width: width, height: height, name: "Git", image: "assets/image/git.png",),
+                                         SkillCard(width: width, height: height, name: "Firebase", image: "assets/image/firebase.png",),
+                                         SkillCard(width: width, height: height, name: "Node", image: "assets/image/node.png",),
+                                         SkillCard(width: width, height: height, name: "Adobe XD", image: "assets/image/adobe.png",),
+                                         SkillCard(width: width, height: height, name: "Figma", image: "assets/image/figma.png",),
+                                           SkillCard(width: width, height: height, name: "Bloc", image: "assets/image/bloc.png",),
+                                           SkillCard(width: width, height: height, name: "Provider", image: "assets/image/provider.jpg",),
+                                           SkillCard(width: width, height: height, name: "Redux", image: "assets/image/redux.png",),
+                                           SkillCard(width: width, height: height, name: "GetX", image: "assets/image/getx.png",),
+                                           SkillCard(width: width, height: height, name: "Postman", image: "assets/image/postman.jpg",),
 
-                                        ],)
+
+
+                                         ],),
+
+
                                       ],
                                     ),
                                   ), Expanded(child: SizedBox()),
@@ -521,6 +507,113 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                   ),
                 ),
 
+///page4
+                Container(
+                  height: height,
+                  width: width,
+                  decoration: BoxDecoration(
+                    color: Colors.black87,
+                  ),
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                        child: Column(
+                          // crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            SizedBox(height: height*.3,),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 0.0),
+                              child: Row(
+                                children: [
+                                  Expanded(child: SizedBox()),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+
+                                        Row(
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            ShaderMask(
+                                              shaderCallback: (Rect bounds) {
+                                                return LinearGradient(
+                                                  colors: [Colors.blue, Colors.purple], // Gradient colors
+                                                  begin: Alignment.topLeft,
+                                                  end: Alignment.bottomRight,
+                                                ).createShader(bounds);
+                                              },
+                                              child: Text('Projects', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .05)),
+                                            ),
+                                            Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
+                                          ],
+                                        ),
+
+                                        SizedBox(height:20),
+                                        Row(children: [
+                                          // Container(
+                                          //   decoration: BoxDecoration(color: Colors.purple),
+                                          // child: ,
+                                          // )
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(10), // Optional rounded edges
+                                              border: Border.all(
+                                                width: 3, // Border width
+                                                color: Colors.transparent, // Required for gradient
+                                              ),
+                                              gradient: LinearGradient(
+                                                colors: [Colors.purple, Colors.blue], // Gradient colors
+                                              ),
+                                            ),
+                                            child: Center(
+                                              child: Padding(
+                                                padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
+                                                child: Text(
+                                                  "Hire Me",
+                                                  style: TextStyle(color: Colors.white),
+                                                ),
+                                              ),
+                                            ),
+                                          )
+
+                                        ],)
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                          ],
+                        ),
+                      ),
+
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        // crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 30.0),
+                                child: Container(
+                                  height: height*.4 , // Adjust size as needed
+                                  // Adjust size as needed
+                                  child: Lottie.asset('assets/image/project.json'),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+
+                    ],
+                  ),
+                ),
 
               ],
             ),
@@ -676,6 +769,34 @@ class _DesktopLayoutState extends State<DesktopLayout> {
           }),
         ],
       ),
+    );
+  }
+}
+
+class SkillCard extends StatelessWidget {
+  const SkillCard({
+    super.key,
+    required this.width,
+    required this.height, required this.name, required this.image,
+  });
+
+  final double width;
+  final double height;
+  final String name;
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: width*.04,
+          height: height*.07,
+          decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage(image),fit: BoxFit.contain),
+            color: Colors.white,borderRadius: BorderRadius.circular(15)),),
+        Text(name,style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .008),)
+      ],
     );
   }
 }
