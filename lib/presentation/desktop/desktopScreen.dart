@@ -25,7 +25,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   bool mainHead3 = false;
   bool mainHead4 = false;
   bool mainHead5 = false;
-
+  bool mainHead6 = false;
   @override
   void initState() {
     super.initState();
@@ -369,13 +369,9 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                                             child: Center(
                                               child: Padding(
                                                 padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
-                                                child: Row(
-                                                  children: [
-                                                    Text(
-                                                      "Hire Me",
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ],
+                                                child: Text(
+                                                  "Hire Me",
+                                                  style: TextStyle(color: Colors.white),
                                                 ),
                                               ),
                                             ),
@@ -414,6 +410,116 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                 ),
 
 
+
+                ///page 3
+                Container(
+                  height: height,
+                  width: width,
+                  decoration: BoxDecoration(
+                    color: Colors.black87,
+                  ),
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                        child: Column(
+                          // crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            SizedBox(height: height*.3,),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 40.0),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+
+                                        Row(
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            ShaderMask(
+                                              shaderCallback: (Rect bounds) {
+                                                return LinearGradient(
+                                                  colors: [Colors.blue, Colors.purple], // Gradient colors
+                                                  begin: Alignment.topLeft,
+                                                  end: Alignment.bottomRight,
+                                                ).createShader(bounds);
+                                              },
+                                              child: Text('Skills', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .05)),
+                                            ),
+                                            Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
+                                          ],
+                                        ),
+                                       Wrap(children: [
+                                         Container(
+                                           width: width*.05,
+                                           height: width*.05,
+                                           decoration: BoxDecoration(
+                                             image: DecorationImage(image: AssetImage("assets/image/flutter.jpg"),fit: BoxFit.cover),
+                                             color: Colors.white,borderRadius: BorderRadius.circular(20)),)
+                                       ],),
+                                        SizedBox(height:20),
+                                        Row(children: [
+                                          // Container(
+                                          //   decoration: BoxDecoration(color: Colors.purple),
+                                          // child: ,
+                                          // )
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(10), // Optional rounded edges
+                                              border: Border.all(
+                                                width: 3, // Border width
+                                                color: Colors.transparent, // Required for gradient
+                                              ),
+                                              gradient: LinearGradient(
+                                                colors: [Colors.purple, Colors.blue], // Gradient colors
+                                              ),
+                                            ),
+                                            child: Center(
+                                              child: Padding(
+                                                padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
+                                                child: Text(
+                                                  "Hire Me",
+                                                  style: TextStyle(color: Colors.white),
+                                                ),
+                                              ),
+                                            ),
+                                          )
+
+                                        ],)
+                                      ],
+                                    ),
+                                  ), Expanded(child: SizedBox()),
+
+                                ],
+                              ),
+                            ),
+
+                          ],),),
+
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        // crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+
+                            children: [
+                              Container(
+                                height: height*.4 , // Adjust size as needed
+                                // Adjust size as needed
+                                child: Lottie.asset('assets/image/skills.json'),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+
+                    ],
+                  ),
+                ),
 
 
               ],
@@ -486,7 +592,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    'Projects',
+                                    'Skills',
                                     style: GoogleFonts.spaceGrotesk(
                                       fontWeight: FontWeight.bold,
                                       color: mainHead3 ? Colors.purple : Colors.white,
@@ -506,13 +612,10 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    'Contact',
+                                    'Projects',
                                     style: GoogleFonts.spaceGrotesk(
                                       fontWeight: FontWeight.bold,
                                       color: mainHead4 ? Colors.blue : Colors.white,
-                                      // decoration: mainHead4 ? TextDecoration.underline : null, // Adds underline
-                                      // decorationColor: Colors.red, // Underline color
-                                      // decorationThickness: 5, // Underline thickness
                                       // fontSize: width * .01
                                     ),
                                   ),
@@ -529,10 +632,33 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    'Resume',
+                                    'Contact',
                                     style: GoogleFonts.spaceGrotesk(
                                       fontWeight: FontWeight.bold,
                                       color: mainHead5 ? Colors.purple : Colors.white,
+                                      // decoration: mainHead4 ? TextDecoration.underline : null, // Adds underline
+                                      // decorationColor: Colors.red, // Underline color
+                                      // decorationThickness: 5, // Underline thickness
+                                      // fontSize: width * .01
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          spaceWidget(width: width, height: height),
+                          Padding(
+                            padding: EdgeInsets.only(top: 0, bottom: 0, right: width * .02),
+                            child: MouseRegion(
+                              onEnter: (_) => screenState(() => mainHead6 = true), // When hovered
+                              onExit: (_) => screenState(() => mainHead6 = false),
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    'Resume',
+                                    style: GoogleFonts.spaceGrotesk(
+                                      fontWeight: FontWeight.bold,
+                                      color: mainHead6 ? Colors.blue : Colors.white,
                                       // fontSize: width * .01
                                     ),
                                   ),
