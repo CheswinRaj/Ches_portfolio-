@@ -1,8 +1,10 @@
 
 
 import 'package:chewie/chewie.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -26,6 +28,8 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   bool mainHead4 = false;
   bool mainHead5 = false;
   bool mainHead6 = false;
+  final PageController pageControl=PageController();
+  // ScrollController =ScrollController();
   @override
   void initState() {
     super.initState();
@@ -52,8 +56,9 @@ class _DesktopLayoutState extends State<DesktopLayout> {
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          SingleChildScrollView(
-            child: Column(
+          PageView(
+            controller: pageControl,
+            scrollDirection: Axis.vertical, // Vertical scrolling
               children: [
                 Stack(
                   children: [
@@ -229,394 +234,19 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                 ),
 
                 ///page 2
-                Container(
-                  height: height,
-                  width: width,
-                  decoration: BoxDecoration(
-                    color: Colors.black87,
-                  ),
-                  child: Stack(
-                    children: [
-                      SizedBox(
-                        child: Column(
-                          // crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            SizedBox(height: height*.3,),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 40.0),
-                              child: Row(
-                                children: [
-                                  Expanded(child: SizedBox()),
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: [
-
-                                        Row(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            ShaderMask(
-                                              shaderCallback: (Rect bounds) {
-                                                return LinearGradient(
-                                                  colors: [Colors.blue, Colors.purple], // Gradient colors
-                                                  begin: Alignment.topLeft,
-                                                  end: Alignment.bottomRight,
-                                                ).createShader(bounds);
-                                              },
-                                              child: Text('About me', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .05)),
-                                            ),
-                                            Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
-                                          ],
-                                        ),
-                                        Row(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            RichText(
-                                              text: TextSpan(
-                                                text: 'I specialize in building seamless  ',
-                                                style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01),
-                                              ),
-                                            ),
-                                            ShaderMask(
-                                              shaderCallback: (Rect bounds) {
-                                                return LinearGradient(
-                                                  colors: [Colors.blue, Colors.purple], // Gradient colors
-                                                  begin: Alignment.topLeft,
-                                                  end: Alignment.bottomRight,
-                                                ).createShader(bounds);
-                                              },
-                                              child: Text('Android ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .013))
-                                                  .animate(
-                                                // effects: [ShimmerEffect(color: Colors.black)],
-                                                  onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 1)))
-                                                  .fadeOut(curve: Curves.easeIn),
-                                            ),
-                                            Text(',', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01)),
-                                            ShaderMask(
-                                              shaderCallback: (Rect bounds) {
-                                                return LinearGradient(
-                                                  colors: [Colors.blue, Colors.purple], // Gradient colors
-                                                  begin: Alignment.topLeft,
-                                                  end: Alignment.bottomRight,
-                                                ).createShader(bounds);
-                                              },
-                                              child: Text('iOS ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .013))
-                                                  .animate(
-                                                // effects: [ShimmerEffect(color: Colors.black)],
-                                                  onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 2)))
-                                                  .fadeOut(curve: Curves.easeIn),
-                                            ),
-                                            Text('and ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01)),
-                                            ShaderMask(
-                                              shaderCallback: (Rect bounds) {
-                                                return LinearGradient(
-                                                  colors: [Colors.blue, Colors.purple], // Gradient colors
-                                                  begin: Alignment.topLeft,
-                                                  end: Alignment.bottomRight,
-                                                ).createShader(bounds);
-                                              },
-                                              child: Text('Web', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .013))
-                                                  .animate(
-                                                // effects: [ShimmerEffect(color: Colors.black)],
-                                                  onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 1)))
-                                                  .fadeOut(curve: Curves.easeIn),
-                                            ),
-                                            Text(' applications using Flutter.  ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01)),
-                                          ],
-                                        ),
-                                        Row(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'With ',
-                                              style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01),
-                                            ),
-                                            ShaderMask(
-                                              shaderCallback: (Rect bounds) {
-                                                return LinearGradient(
-                                                  colors: [Colors.blue, Colors.purple], // Gradient colors
-                                                  begin: Alignment.topLeft,
-                                                  end: Alignment.bottomRight,
-                                                ).createShader(bounds);
-                                              },
-                                              child: Text('2', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01)),
-                                            ),
-                                            Text(' years of experience, I create high-performance and visually appealing apps.',
-                                                style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01)),
-                                          ],
-                                        ),
-                                        SizedBox(height:20),
-                                        Row(children: [
-                                          // Container(
-                                          //   decoration: BoxDecoration(color: Colors.purple),
-                                          // child: ,
-                                          // )
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(10), // Optional rounded edges
-                                              border: Border.all(
-                                                width: 3, // Border width
-                                                color: Colors.transparent, // Required for gradient
-                                              ),
-                                              gradient: LinearGradient(
-                                                colors: [Colors.purple, Colors.blue], // Gradient colors
-                                              ),
-                                            ),
-                                            child: Center(
-                                              child: Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
-                                                child: Text(
-                                                  "Hire Me",
-                                                  style: TextStyle(color: Colors.white),
-                                                ),
-                                              ),
-                                            ),
-                                          )
-
-                                        ],)
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                                              ],),),
-
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        // crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-
-                            children: [
-                              Container(
-                                height: height*.4 , // Adjust size as needed
-                                // Adjust size as needed
-                                child: Lottie.asset('assets/image/about.json'),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-
-                    ],
-                  ),
-                ),
+                page2(height: height, width: width),
 
 
 
                 ///page 3
-                Container(
-                  height: height,
-                  width: width,
-                  decoration: BoxDecoration(
-                    color: Colors.black87,
-                  ),
-                  child: Stack(
-                    children: [
-                      SizedBox(
-                        child: Column(
-                          // crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            SizedBox(height: height*.3,),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 40.0),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: [
-
-                                        Row(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            ShaderMask(
-                                              shaderCallback: (Rect bounds) {
-                                                return LinearGradient(
-                                                  colors: [Colors.blue, Colors.purple], // Gradient colors
-                                                  begin: Alignment.topLeft,
-                                                  end: Alignment.bottomRight,
-                                                ).createShader(bounds);
-                                              },
-                                              child: Text('Skills', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .05)),
-                                            ),
-                                            Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
-                                          ],
-                                        ),
-                                       SizedBox(height: 30,),
-                                       Wrap(
-                                         spacing: 30,
-                                         runSpacing: 10,
-                                         children: [
-                                         SkillCard(width: width, height: height, name: "Flutter", image: "assets/image/flutter.jpg",),
-                                         SkillCard(width: width, height: height, name: "Dart", image: "assets/image/dart.png",),
-                                         SkillCard(width: width, height: height, name: "Git", image: "assets/image/git.png",),
-                                         SkillCard(width: width, height: height, name: "Firebase", image: "assets/image/firebase.png",),
-                                         SkillCard(width: width, height: height, name: "Node", image: "assets/image/node.png",),
-                                         SkillCard(width: width, height: height, name: "Adobe XD", image: "assets/image/adobe.png",),
-                                         SkillCard(width: width, height: height, name: "Figma", image: "assets/image/figma.png",),
-                                           SkillCard(width: width, height: height, name: "Bloc", image: "assets/image/bloc.png",),
-                                           SkillCard(width: width, height: height, name: "Provider", image: "assets/image/provider.jpg",),
-                                           SkillCard(width: width, height: height, name: "Redux", image: "assets/image/redux.png",),
-                                           SkillCard(width: width, height: height, name: "GetX", image: "assets/image/getx.png",),
-                                           SkillCard(width: width, height: height, name: "Postman", image: "assets/image/postman.jpg",),
-
-
-
-                                         ],),
-
-
-                                      ],
-                                    ),
-                                  ), Expanded(child: SizedBox()),
-
-                                ],
-                              ),
-                            ),
-
-                          ],),),
-
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        // crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-
-                            children: [
-                              Container(
-                                height: height*.4 , // Adjust size as needed
-                                // Adjust size as needed
-                                child: Lottie.asset('assets/image/skills.json'),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-
-                    ],
-                  ),
-                ),
+                page3(height: height, width: width),
 
 ///page4
-                Container(
-                  height: height,
-                  width: width,
-                  decoration: BoxDecoration(
-                    color: Colors.black87,
-                  ),
-                  child: Stack(
-                    children: [
-                      SizedBox(
-                        child: Column(
-                          // crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            SizedBox(height: height*.3,),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 0.0),
-                              child: Row(
-                                children: [
-                                  Expanded(child: SizedBox()),
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: [
+                page4(height: height, width: width),
 
-                                        Row(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            ShaderMask(
-                                              shaderCallback: (Rect bounds) {
-                                                return LinearGradient(
-                                                  colors: [Colors.blue, Colors.purple], // Gradient colors
-                                                  begin: Alignment.topLeft,
-                                                  end: Alignment.bottomRight,
-                                                ).createShader(bounds);
-                                              },
-                                              child: Text('Projects', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .05)),
-                                            ),
-                                            Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
-                                          ],
-                                        ),
-
-                                        SizedBox(height:20),
-                                        Row(children: [
-                                          // Container(
-                                          //   decoration: BoxDecoration(color: Colors.purple),
-                                          // child: ,
-                                          // )
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(10), // Optional rounded edges
-                                              border: Border.all(
-                                                width: 3, // Border width
-                                                color: Colors.transparent, // Required for gradient
-                                              ),
-                                              gradient: LinearGradient(
-                                                colors: [Colors.purple, Colors.blue], // Gradient colors
-                                              ),
-                                            ),
-                                            child: Center(
-                                              child: Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
-                                                child: Text(
-                                                  "Hire Me",
-                                                  style: TextStyle(color: Colors.white),
-                                                ),
-                                              ),
-                                            ),
-                                          )
-
-                                        ],)
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                          ],
-                        ),
-                      ),
-
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        // crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 30.0),
-                                child: Container(
-                                  height: height*.4 , // Adjust size as needed
-                                  // Adjust size as needed
-                                  child: Lottie.asset('assets/image/project.json'),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-
-                    ],
-                  ),
-                ),
-
+                page5(height: height, width: width),
               ],
-            ),
+
           ),
           StatefulBuilder(builder: (context, screenState) {
             return Padding(
@@ -642,15 +272,20 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                               onExit: (_) => screenState(() => mainHead1 = false),
                               child: Column(
                                 children: <Widget>[
-                                  Text(
-                                    'Home ',
-                                    style: GoogleFonts.spaceGrotesk(
-                                      fontWeight: FontWeight.bold,
-                                      color: mainHead1 ? Colors.purple : Colors.white,
-                                      // decoration: mainHead1?TextDecoration.underline:null, // Adds underline
-                                      // decorationColor: Colors.red, // Underline color
-                                      // decorationThickness: 5, // Underline thickness
-                                      // fontSize: width * .01
+                                  GestureDetector(
+                                    onTap: (){
+                                      pageControl.animateTo(0, duration: Duration(milliseconds: 500), curve: Curves.easeOutCubic);
+                                    },
+                                    child: Text(
+                                      'Home ',
+                                      style: GoogleFonts.spaceGrotesk(
+                                        fontWeight: FontWeight.bold,
+                                        color: mainHead1 ? Colors.purple : Colors.white,
+                                        // decoration: mainHead1?TextDecoration.underline:null, // Adds underline
+                                        // decorationColor: Colors.red, // Underline color
+                                        // decorationThickness: 5, // Underline thickness
+                                        // fontSize: width * .01
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -665,11 +300,17 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                               onExit: (_) => screenState(() => mainHead2 = false),
                               child: Column(
                                 children: <Widget>[
-                                  Text(
-                                    'About',
-                                    style: GoogleFonts.spaceGrotesk(
-                                      fontWeight: FontWeight.bold,
-                                      color: mainHead2 ? Colors.blue : Colors.white,
+                                  GestureDetector(
+                                    onTap:(){
+                                      pageControl.animateTo(height*1, duration: Duration(milliseconds: 500), curve: Curves.easeOutCubic);
+
+                                    },
+                                    child: Text(
+                                      'About',
+                                      style: GoogleFonts.spaceGrotesk(
+                                        fontWeight: FontWeight.bold,
+                                        color: mainHead2 ? Colors.blue : Colors.white,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -684,12 +325,18 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                               onExit: (_) => screenState(() => mainHead3 = false),
                               child: Column(
                                 children: <Widget>[
-                                  Text(
-                                    'Skills',
-                                    style: GoogleFonts.spaceGrotesk(
-                                      fontWeight: FontWeight.bold,
-                                      color: mainHead3 ? Colors.purple : Colors.white,
-                                      // fontSize: width * .01
+                                  GestureDetector(
+                                    onTap:(){
+                                      pageControl.animateTo(height*2, duration: Duration(milliseconds: 500), curve: Curves.easeOutCubic);
+
+                                    },
+                                    child: Text(
+                                      'Skills',
+                                      style: GoogleFonts.spaceGrotesk(
+                                        fontWeight: FontWeight.bold,
+                                        color: mainHead3 ? Colors.purple : Colors.white,
+                                        // fontSize: width * .01
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -704,12 +351,18 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                               onExit: (_) => screenState(() => mainHead4 = false),
                               child: Column(
                                 children: <Widget>[
-                                  Text(
-                                    'Projects',
-                                    style: GoogleFonts.spaceGrotesk(
-                                      fontWeight: FontWeight.bold,
-                                      color: mainHead4 ? Colors.blue : Colors.white,
-                                      // fontSize: width * .01
+                                  GestureDetector(
+                                    onTap:(){
+                                      pageControl.animateTo(height*3, duration: Duration(milliseconds: 500), curve: Curves.easeOutCubic);
+
+                                    },
+                                    child: Text(
+                                      'Projects',
+                                      style: GoogleFonts.spaceGrotesk(
+                                        fontWeight: FontWeight.bold,
+                                        color: mainHead4 ? Colors.blue : Colors.white,
+                                        // fontSize: width * .01
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -724,15 +377,21 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                               onExit: (_) => screenState(() => mainHead5 = false),
                               child: Column(
                                 children: <Widget>[
-                                  Text(
-                                    'Contact',
-                                    style: GoogleFonts.spaceGrotesk(
-                                      fontWeight: FontWeight.bold,
-                                      color: mainHead5 ? Colors.purple : Colors.white,
-                                      // decoration: mainHead4 ? TextDecoration.underline : null, // Adds underline
-                                      // decorationColor: Colors.red, // Underline color
-                                      // decorationThickness: 5, // Underline thickness
-                                      // fontSize: width * .01
+                                  GestureDetector(
+                                    onTap:(){
+                                      pageControl.animateTo(height*4, duration: Duration(milliseconds: 500), curve: Curves.easeOutCubic);
+
+                                    },
+                                    child: Text(
+                                      'Contact',
+                                      style: GoogleFonts.spaceGrotesk(
+                                        fontWeight: FontWeight.bold,
+                                        color: mainHead5 ? Colors.purple : Colors.white,
+                                        // decoration: mainHead4 ? TextDecoration.underline : null, // Adds underline
+                                        // decorationColor: Colors.red, // Underline color
+                                        // decorationThickness: 5, // Underline thickness
+                                        // fontSize: width * .01
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -747,12 +406,18 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                               onExit: (_) => screenState(() => mainHead6 = false),
                               child: Column(
                                 children: <Widget>[
-                                  Text(
-                                    'Resume',
-                                    style: GoogleFonts.spaceGrotesk(
-                                      fontWeight: FontWeight.bold,
-                                      color: mainHead6 ? Colors.blue : Colors.white,
-                                      // fontSize: width * .01
+                                  GestureDetector(
+                                    onTap:(){
+                                      pageControl.animateTo(height*5, duration: Duration(milliseconds: 500), curve: Curves.easeOutCubic);
+
+                                    },
+                                    child: Text(
+                                      'Resume',
+                                      style: GoogleFonts.spaceGrotesk(
+                                        fontWeight: FontWeight.bold,
+                                        color: mainHead6 ? Colors.blue : Colors.white,
+                                        // fontSize: width * .01
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -767,6 +432,512 @@ class _DesktopLayoutState extends State<DesktopLayout> {
               ),
             );
           }),
+        ],
+      ),
+    );
+  }
+}
+
+class page4 extends StatelessWidget {
+  const page4({
+    super.key,
+    required this.height,
+    required this.width,
+  });
+
+  final double height;
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    List<Map<String,dynamic>> caro=[
+      {
+        "image":"assets/image/cybernet.webp",
+        "content":"Cybernet ITS delivering innovation and excellence in Enterprise Resource Planning software.The app covering Finance, Sales, Inventory, Procurement, Planning and production, HRMS , CRM etc. modules.",
+        "name":"Cybernet IT Solutions",
+        "link":"https://play.google.com/store/apps/details?id=com.redstars.mobile&pcampaignid=web_share",
+        "isLink":true
+      },
+      {
+        "image":"assets/image/node.png",
+        "content":"Billing ERP is a van sales application that enables salesmen to take orders and track sales details efficiently. It streamlines the sales process by providing real-time order management and sales insights.",
+        "name":"Billing ERP ",
+        "link":"",
+        "isLink":false
+
+      },
+      {
+        "image":"assets/image/node.png",
+        "content":"Arakkal Tap and Order is a hotel application that allows customers to place orders for dine-in, takeaway, or home delivery. It simplifies the ordering process for a seamless dining experience.",
+        "name":"Arakkal Tap and Order",
+        "link":"",
+        "isLink":false
+
+      },
+      {
+        "image":"assets/image/node.png",
+        "content":"360 Solve is an ERP application designed to streamline business operations and enhance efficiency. It provides integrated solutions for managing various business processes.",
+        "name":"360 solve",
+        "link":"",
+        "isLink":false
+
+      },
+
+    ];
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        color: Colors.black87,
+      ),
+      child: Stack(
+        children: [
+          SizedBox(
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(height: height*.25,),
+                Padding(
+                  padding: const EdgeInsets.only(right: 0.0),
+                  child: Row(
+                    children: [
+                      Expanded(child: SizedBox()),
+                      Expanded(flex: 1,
+                        child: Container(
+                          // color: Colors.green,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  ShaderMask(
+                                    shaderCallback: (Rect bounds) {
+                                      return LinearGradient(
+                                        colors: [Colors.blue, Colors.purple], // Gradient colors
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                      ).createShader(bounds);
+                                    },
+                                    child: Text('Projects', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .035)),
+                                  ),
+                                  Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
+                                ],
+                              ),
+
+                              SizedBox(height:20),
+                              Row(children: [
+
+                                SizedBox(
+                                  height: height*.4,
+                                  width: width*.35,
+
+                                  child: FlutterCarousel(
+                                    options: FlutterCarouselOptions(
+                                    viewportFraction: .95,
+                                      // height: 400.0,
+                                      autoPlay: true,
+                                      showIndicator: false,
+                                      slideIndicator: CircularSlideIndicator(),
+                                    ),
+                                    items: caro.map((i) {
+                                      return Builder(
+                                        builder: (BuildContext context) {
+                                          return Container(
+                                              width: width*.35,
+                                              height: height*.25,
+                                              margin: EdgeInsets.symmetric(horizontal: 5.0),
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(20),
+                                                  color: Colors.white,
+                                                gradient: LinearGradient(
+                                                  begin: Alignment.bottomLeft,
+                                                  end:Alignment.centerRight ,
+                                                  colors: [Colors.purple, Colors.blue, Colors.blue,Colors.purple,], // Gradient colors
+                                                )
+                                              ),
+                                              child: Center(child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  // Text(' ${i["name"]}', style: TextStyle(fontSize: 16.0),),
+                                                  Padding(
+                                                    padding: const EdgeInsets.symmetric(vertical: 0.0),
+                                                    child: ProjectCard(width: width, height: height, name: "${i["name"]}", image: "${i["image"]}",onTaped: () async {
+                                                      if(i["isLink"]){
+                                                            if (!await launchUrl(
+                                                                Uri.parse(
+                                                                    "${i["link"]}"))) {
+                                                              throw Exception(
+                                                                  'Could not launch ${i["link"]}');
+                                                            }
+                                                          }
+                                                        },),
+                                                  ),
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.all(10.0),
+                                                    child: Text("${i["content"]}",style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 12),),
+                                                  )
+                                                ],
+                                              ))
+                                          ).animate(
+                                              effects: [
+                                                  FlipEffect(begin: .03,end: .0)
+                                            // SlideEffect(begin: Offset(0,-.02),end: Offset(-.01,0 ))
+                                            // ShimmerEffect(
+                                            //   colors: [Colors.blue, Colors.purple], // Gradient colors
+                                            // )
+                                          ],
+                                              onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 1)));
+                                        },
+                                      );
+                                    }).toList(),
+                                  ),
+                                )
+
+                              ],)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+
+                children: [
+                  Padding(
+                    padding:  EdgeInsets.only(left: width*.1),
+                    child: Container(
+                      height: height*.5 , // Adjust size as needed
+                      // Adjust size as needed
+                      child: Lottie.asset('assets/image/project.json'),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+
+        ],
+      ),
+    );
+  }
+}
+
+class page3 extends StatelessWidget {
+  const page3({
+    super.key,
+    required this.height,
+    required this.width,
+  });
+
+  final double height;
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        color: Colors.black87,
+      ),
+      child: Stack(
+        children: [
+          SizedBox(
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(height: height*.3,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 40.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                ShaderMask(
+                                  shaderCallback: (Rect bounds) {
+                                    return LinearGradient(
+                                      colors: [Colors.blue, Colors.purple], // Gradient colors
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ).createShader(bounds);
+                                  },
+                                  child: Text('Skills', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .05)),
+                                ),
+                                Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
+                              ],
+                            ),
+                           SizedBox(height: 30,),
+                           Wrap(
+                             spacing: 30,
+                             runSpacing: 10,
+                             children: [
+                             SkillCard(width: width, height: height, name: "Flutter", image: "assets/image/flutter.jpg",),
+                             SkillCard(width: width, height: height, name: "Dart", image: "assets/image/dart.png",),
+                             SkillCard(width: width, height: height, name: "Git", image: "assets/image/git.png",),
+                             SkillCard(width: width, height: height, name: "Firebase", image: "assets/image/firebase.png",),
+                             SkillCard(width: width, height: height, name: "Node", image: "assets/image/node.png",),
+                             SkillCard(width: width, height: height, name: "Adobe XD", image: "assets/image/adobe.png",),
+                             SkillCard(width: width, height: height, name: "Figma", image: "assets/image/figma.png",),
+                               SkillCard(width: width, height: height, name: "Bloc", image: "assets/image/bloc.png",),
+                               SkillCard(width: width, height: height, name: "Provider", image: "assets/image/provider.jpg",),
+                               SkillCard(width: width, height: height, name: "Redux", image: "assets/image/redux.png",),
+                               SkillCard(width: width, height: height, name: "GetX", image: "assets/image/getx.png",),
+                               SkillCard(width: width, height: height, name: "Postman", image: "assets/image/postman.jpg",),
+
+
+
+                             ],),
+
+
+                          ],
+                        ),
+                      ), Expanded(child: SizedBox()),
+
+                    ],
+                  ),
+                ),
+
+              ],),),
+
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+
+                children: [
+                  Padding(
+                    padding:  EdgeInsets.only(right: width*.1),
+                    child: Container(
+                      height: height*.4 , // Adjust size as needed
+                      // Adjust size as needed
+                      child: Lottie.asset('assets/image/skills.json'),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+
+        ],
+      ),
+    );
+  }
+}
+
+class page2 extends StatelessWidget {
+  const page2({
+    super.key,
+    required this.height,
+    required this.width,
+  });
+
+  final double height;
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        color: Colors.black87,
+      ),
+      child: Stack(
+        children: [
+          SizedBox(
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(height: height*.3,),
+                Padding(
+                  padding: const EdgeInsets.only(right: 40.0),
+                  child: Row(
+                    children: [
+                      Expanded(child: SizedBox()),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                ShaderMask(
+                                  shaderCallback: (Rect bounds) {
+                                    return LinearGradient(
+                                      colors: [Colors.blue, Colors.purple], // Gradient colors
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ).createShader(bounds);
+                                  },
+                                  child: Text('About me', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .05)),
+                                ),
+                                Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
+                              ],
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                RichText(
+                                  text: TextSpan(
+                                    text: 'I specialize in building seamless  ',
+                                    style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01),
+                                  ),
+                                ),
+                                ShaderMask(
+                                  shaderCallback: (Rect bounds) {
+                                    return LinearGradient(
+                                      colors: [Colors.blue, Colors.purple], // Gradient colors
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ).createShader(bounds);
+                                  },
+                                  child: Text('Android ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .013))
+                                      .animate(
+                                    // effects: [ShimmerEffect(color: Colors.black)],
+                                      onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 1)))
+                                      .fadeOut(curve: Curves.easeIn),
+                                ),
+                                Text(',', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01)),
+                                ShaderMask(
+                                  shaderCallback: (Rect bounds) {
+                                    return LinearGradient(
+                                      colors: [Colors.blue, Colors.purple], // Gradient colors
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ).createShader(bounds);
+                                  },
+                                  child: Text('iOS ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .013))
+                                      .animate(
+                                    // effects: [ShimmerEffect(color: Colors.black)],
+                                      onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 2)))
+                                      .fadeOut(curve: Curves.easeIn),
+                                ),
+                                Text('and ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01)),
+                                ShaderMask(
+                                  shaderCallback: (Rect bounds) {
+                                    return LinearGradient(
+                                      colors: [Colors.blue, Colors.purple], // Gradient colors
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ).createShader(bounds);
+                                  },
+                                  child: Text('Web', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .013))
+                                      .animate(
+                                    // effects: [ShimmerEffect(color: Colors.black)],
+                                      onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 1)))
+                                      .fadeOut(curve: Curves.easeIn),
+                                ),
+                                Text(' applications using Flutter.  ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01)),
+                              ],
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'With ',
+                                  style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01),
+                                ),
+                                ShaderMask(
+                                  shaderCallback: (Rect bounds) {
+                                    return LinearGradient(
+                                      colors: [Colors.blue, Colors.purple], // Gradient colors
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ).createShader(bounds);
+                                  },
+                                  child: Text('2', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01)),
+                                ),
+                                Text(' years of experience, I create high-performance and visually appealing apps.',
+                                    style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .01)),
+                              ],
+                            ),
+                            SizedBox(height:20),
+                            Row(children: [
+                              // Container(
+                              //   decoration: BoxDecoration(color: Colors.purple),
+                              // child: ,
+                              // )
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10), // Optional rounded edges
+                                  border: Border.all(
+                                    width: 3, // Border width
+                                    color: Colors.transparent, // Required for gradient
+                                  ),
+                                  gradient: LinearGradient(
+                                    colors: [Colors.purple, Colors.blue], // Gradient colors
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
+                                    child: Text(
+                                      "Hire Me",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              )
+
+                            ],)
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                                  ],),),
+
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+
+                children: [
+                  Container(
+                    height: height*.4 , // Adjust size as needed
+                    // Adjust size as needed
+                    child: Lottie.asset('assets/image/about.json'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+
         ],
       ),
     );
@@ -801,6 +972,36 @@ class SkillCard extends StatelessWidget {
   }
 }
 
+class ProjectCard extends StatelessWidget {
+  const ProjectCard({
+    super.key,
+    required this.width,
+    required this.height, required this.name, required this.image, this.onTaped,
+  });
+
+  final double width;
+  final double height;
+  final String name;
+  final String image;
+final void Function()? onTaped;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: onTaped,
+          child: Container(
+            width: width*.045,
+            height: height*.075,
+            decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage(image),fit: BoxFit.contain),
+                color: Colors.white,borderRadius: BorderRadius.circular(15)),),
+        ),
+        Text(name,style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .008),)
+      ],
+    );
+  }
+}
 class spaceWidget extends StatelessWidget {
   const spaceWidget({
     super.key,
@@ -898,3 +1099,184 @@ class GradientBorderPainter extends CustomPainter {
     return false;
   }
 }
+
+class page5 extends StatelessWidget {
+   page5({
+    super.key,
+    required this.height,
+    required this.width,
+  });
+
+  final double height;
+  final double width;
+
+
+  bool contact2 = false;
+  bool contact1 = false;
+  bool contact3 = false;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+        color: Colors.black87,
+      ),
+      child: Stack(
+        children: [
+          SizedBox(
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(height: height*.3,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 40.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Padding(padding: EdgeInsets.only(left: width*.1),
+                        child: StatefulBuilder(
+                          builder: (context,contactState) {
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    ShaderMask(
+                                      shaderCallback: (Rect bounds) {
+                                        return LinearGradient(
+                                          colors: [Colors.blue, Colors.purple], // Gradient colors
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                        ).createShader(bounds);
+                                      },
+                                      child: Text('Contact', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .05)),
+                                    ),
+                                    Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
+                                  ],
+                                ),
+                                SizedBox(height: 30,),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 8.0),
+                                      child: Icon(Icons.phone_android_outlined,color: Colors.white,),
+                                    ),MouseRegion(
+                                        onEnter: (_) => contactState(() => contact1 = true), // When mouse enters
+                                        onExit: (_) => contactState(() => contact1 = false),child: GestureDetector(onTap: () async {
+                                      final Uri dialUri = Uri(
+                                        scheme: 'tel',
+                                        path: '+917034489417'
+                                             // Replace with the specific phone number
+                                      );
+
+                                      if (await canLaunchUrl(dialUri)) {
+                                      await launchUrl(dialUri);
+                                      } else {
+                                      throw "Could not launch dialer";
+                                      }
+                                    },child: Text("+91 7034489417",style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color:contact1?Colors.blue: Colors.white, fontSize: width * .01),)))
+                                  ],),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 8.0),
+                                      child: Icon(Icons.email,color: Colors.white,),
+                                    ),GestureDetector(
+                                        onTap: () async {
+                                          final Uri emailUri = Uri(
+                                            scheme: 'mailto',
+                                            path: 'cheswin1999@gmail.com', // Replace with your specific email ID
+                                          );
+
+                                          if (await canLaunchUrl(emailUri)) {
+                                          await launchUrl(emailUri);
+                                          } else {
+                                          throw "Could not launch email";
+                                          }
+                                        },
+                                        child:MouseRegion(
+                                            onEnter: (_) => contactState(() => contact2 = true), // When mouse enters
+                                            onExit: (_) => contactState(() => contact2 = false),child: Text("cheswin1999@gmail.com",style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color:contact2?Colors.purple: Colors.white, fontSize: width * .01),)))
+                                  ],),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(children: [
+                                    GestureDetector(
+                                      onTap: () async {
+                                        String url = "https://wa.me/+917034489417?text=${Uri.encodeComponent("Hello, Cheswin")}";
+
+                                        if (await canLaunchUrl(Uri.parse(url))) {
+                                        await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+                                        } else {
+                                        throw "Could not launch WhatsApp";
+                                        }
+                                      },
+                                      child: Container(
+                                          decoration: BoxDecoration(color: Colors.green,borderRadius: BorderRadius.circular(15)),
+                                          child:
+                                          Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Row(
+                                              children: [
+                                                Icon(CupertinoIcons.chat_bubble,color: Colors.white,),
+                                                MouseRegion(
+                                                    onEnter: (_) => contactState(() => contact3 = true), // When mouse enters
+                                                    onExit: (_) => contactState(() => contact3 = false),
+                                                    child: Text(" WhatsApp",style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: contact3?Colors.blue: Colors.white, fontSize: width * .01),)),
+                                              ],
+                                            ),
+                                          )
+
+                                      ),
+                                    )],),
+                                )
+                              ],
+                            );
+                          }
+                        ),
+                        )
+                      ), Expanded(child: SizedBox()),
+
+                    ],
+                  ),
+                ),
+
+              ],),),
+
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: width*.2),
+                    child: Container(
+                      height: height*.4 , // Adjust size as needed
+                      // Adjust size as needed
+                      child: Lottie.asset('assets/image/contac.json'),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+
+        ],
+      ),
+    );
+  }
+}
+
+
