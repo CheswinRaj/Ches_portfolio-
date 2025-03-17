@@ -407,8 +407,12 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                               child: Column(
                                 children: <Widget>[
                                   GestureDetector(
-                                    onTap:(){
-                                      pageControl.animateTo(height*5, duration: Duration(milliseconds: 500), curve: Curves.easeOutCubic);
+                                    onTap:()async {
+                                      if (await canLaunchUrl(Uri.parse("https://drive.google.com/uc?export=download&id=1jh8z0drYPJFEFLIoD0NZVyJ286xNb14B"))) {
+                                        await launchUrl(Uri.parse("https://drive.google.com/uc?export=download&id=1jh8z0drYPJFEFLIoD0NZVyJ286xNb14B"), mode: LaunchMode.externalApplication);
+                                      } else {
+                                        throw 'Could not launch https://drive.google.com/uc?export=download&id=1jh8z0drYPJFEFLIoD0NZVyJ286xNb14B';
+                                      }
 
                                     },
                                     child: Text(
@@ -459,7 +463,7 @@ class page4 extends StatelessWidget {
         "isLink":true
       },
       {
-        "image":"assets/image/node.png",
+        "image":"assets/image/billingerp.png",
         "content":"Billing ERP is a van sales application that enables salesmen to take orders and track sales details efficiently. It streamlines the sales process by providing real-time order management and sales insights.",
         "name":"Billing ERP ",
         "link":"",
@@ -467,7 +471,7 @@ class page4 extends StatelessWidget {
 
       },
       {
-        "image":"assets/image/node.png",
+        "image":"assets/image/172.png",
         "content":"Arakkal Tap and Order is a hotel application that allows customers to place orders for dine-in, takeaway, or home delivery. It simplifies the ordering process for a seamless dining experience.",
         "name":"Arakkal Tap and Order",
         "link":"",
@@ -475,7 +479,7 @@ class page4 extends StatelessWidget {
 
       },
       {
-        "image":"assets/image/node.png",
+        "image":"assets/image/billingerp.png",
         "content":"360 Solve is an ERP application designed to streamline business operations and enhance efficiency. It provides integrated solutions for managing various business processes.",
         "name":"360 solve",
         "link":"",
@@ -964,7 +968,7 @@ class SkillCard extends StatelessWidget {
           width: width*.04,
           height: height*.07,
           decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(image),fit: BoxFit.contain),
+            image: DecorationImage(image: AssetImage(image),fit: BoxFit.fill),
             color: Colors.white,borderRadius: BorderRadius.circular(15)),),
         Text(name,style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .008),)
       ],
@@ -994,7 +998,7 @@ final void Function()? onTaped;
             width: width*.045,
             height: height*.075,
             decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(image),fit: BoxFit.contain),
+                image: DecorationImage(image: AssetImage(image),fit: BoxFit.cover),
                 color: Colors.white,borderRadius: BorderRadius.circular(15)),),
         ),
         Text(name,style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .008),)
