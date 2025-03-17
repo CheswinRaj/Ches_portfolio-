@@ -22,6 +22,8 @@ class _MobileLayoutState extends State<MobileLayout> {
   bool mainHead4 = false;
   bool mainHead5 = false;
   bool mainHead6 = false;
+  bool resClr = false;
+
   final PageController pageControl=PageController();
   // ScrollController =ScrollController();
   @override
@@ -187,154 +189,198 @@ class _MobileLayoutState extends State<MobileLayout> {
               SizedBox(
                   height: height,
                   width: width,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: height * .1,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 40.0),
-                            child: RichText(
-                              text: TextSpan(
-                                text: 'Hello ',
-                                style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .07),
+                  child: SingleChildScrollView(
+                    physics: NeverScrollableScrollPhysics(),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: height * .1,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 40.0),
+                              child: RichText(
+                                text: TextSpan(
+                                  text: 'Hello ',
+                                  style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .07),
+                                ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 40.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                RichText(
-                                  text: TextSpan(
-                                    text: 'This ',
-                                    style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .043),
-                                    children: <TextSpan>[
-                                      TextSpan(text: 'is', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .03)),
-                                    ],
+                            Padding(
+                              padding: const EdgeInsets.only(left: 40.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  RichText(
+                                    text: TextSpan(
+                                      text: 'This ',
+                                      style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .043),
+                                      children: <TextSpan>[
+                                        TextSpan(text: 'is', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .03)),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(' Cheswin Raj!', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .05)).animate(effects: [
+                                    ShimmerEffect(
+                                      colors: [Colors.blue, Colors.purple], // Gradient colors
+                                    )
+                                  ], onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 3)))
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 40.0),
+                              child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start, children: [
+                                ShaderMask(
+                                  shaderCallback: (Rect bounds) {
+                                    return LinearGradient(
+                                      colors: [Colors.blue, Colors.purple], // Gradient colors
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ).createShader(bounds);
+                                  },
+                                  child: Text(
+                                    'Flutter  ',
+                                    style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .04),
                                   ),
                                 ),
-                                Text(' Cheswin Raj!', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .05)).animate(effects: [
-                                  ShimmerEffect(
-                                    colors: [Colors.blue, Colors.purple], // Gradient colors
-                                  )
-                                ], onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 3)))
-                              ],
+                                Text(
+                                  'Developer',
+                                  style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .03),
+                                )
+                              ]),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 40.0),
-                            child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.start, children: [
-                              ShaderMask(
-                                shaderCallback: (Rect bounds) {
-                                  return LinearGradient(
-                                    colors: [Colors.blue, Colors.purple], // Gradient colors
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                  ).createShader(bounds);
-                                },
-                                child: Text(
-                                  'Flutter  ',
-                                  style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .04),
-                                ),
-                              ),
-                              Text(
-                                'Developer',
-                                style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .03),
-                              )
-                            ]),
-                          ),
-                          SizedBox(
-                            // color:Colors.red,
+                            StatefulBuilder(
+                                builder: (context,resState) {
+                                  return MouseRegion(
+                                    onEnter: (_) => resState(() => resClr = true), // When mouse enters
+                                    onExit: (_) => resState(() => resClr = false),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 40.0,top: 10),
+                                      child: Container(
+                                        width: width*.15,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(15), // Optional rounded edges
+                                          border: Border.all(
+                                            width: 3, // Border width
+                                            color: Colors.transparent, // Required for gradient
+                                          ),
+                                          gradient: LinearGradient(
+                                            colors: [Colors.purple, Colors.blue], // Gradient colors
+                                          ),
+                                        ),
+                                        child: Center(
+                                          child: GestureDetector(
+                                            onTap: () async {
+                                              if (await canLaunchUrl(Uri.parse("https://drive.google.com/uc?export=download&id=1jh8z0drYPJFEFLIoD0NZVyJ286xNb14B"))) {
+                                                await launchUrl(Uri.parse("https://drive.google.com/uc?export=download&id=1jh8z0drYPJFEFLIoD0NZVyJ286xNb14B"), mode: LaunchMode.externalApplication);
+                                              } else {
+                                                throw 'Could not launch https://drive.google.com/uc?export=download&id=1jh8z0drYPJFEFLIoD0NZVyJ286xNb14B';
+                                              }
 
-                            ///image here
-                            height: height*.45,),
+                                            }
+                                            ,
+                                            child: Text(
+                                              "Resume",
+                                              style: TextStyle(color: resClr?Colors.black:Colors.white,fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }
+                            ),
+                            SizedBox(
+                              // color:Colors.red,
 
-                          Container(
-                            color: Colors.transparent,
-                            child: StatefulBuilder(builder: (context, setStates) {
-                              return Padding(
-                                padding: const EdgeInsets.only(left: 50),
-                                child: Column(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        _launchUrl("https://github.com/CheswinRaj");
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                        child: MouseRegion(
-                                          onEnter: (_) => setStates(() => iconClr1 = true), // When mouse enters
-                                          onExit: (_) => setStates(() => iconClr1 = false),
-                                          child: SizedBox(
-                                            height: height * .035,
-                                            width: height * .035,
-                                            child: SvgPicture.asset(
-                                              "assets/svg/git.svg",
-                                              colorFilter: ColorFilter.mode(iconClr1 ? Colors.red : Colors.white, BlendMode.srcIn),
-                                              semanticsLabel: 'Red dash paths',
+                              ///image here
+                              height: height*.3,),
+
+                            Container(
+                              color: Colors.transparent,
+                              child: StatefulBuilder(builder: (context, setStates) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(left: 50),
+                                  child: Column(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          _launchUrl("https://github.com/CheswinRaj");
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                          child: MouseRegion(
+                                            onEnter: (_) => setStates(() => iconClr1 = true), // When mouse enters
+                                            onExit: (_) => setStates(() => iconClr1 = false),
+                                            child: SizedBox(
+                                              height: height * .035,
+                                              width: height * .035,
+                                              child: SvgPicture.asset(
+                                                "assets/svg/git.svg",
+                                                colorFilter: ColorFilter.mode(iconClr1 ? Colors.red : Colors.white, BlendMode.srcIn),
+                                                semanticsLabel: 'Red dash paths',
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        _launchUrl("https://www.linkedin.com/in/cheswin-raj-9352941b2/");
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                        child: MouseRegion(
-                                          onEnter: (_) => setStates(() => iconClr2 = true), // When mouse enters
-                                          onExit: (_) => setStates(() => iconClr2 = false),
-                                          child: SizedBox(
-                                            height: height * .035,
-                                            width: height * .035,
-                                            child: SvgPicture.asset(
-                                              "assets/svg/linkedin.svg",
-                                              colorFilter: ColorFilter.mode(iconClr2 ? Colors.blue : Colors.white, BlendMode.srcIn),
-                                              semanticsLabel: 'Red dash paths',
+                                      GestureDetector(
+                                        onTap: () {
+                                          _launchUrl("https://www.linkedin.com/in/cheswin-raj-9352941b2/");
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                          child: MouseRegion(
+                                            onEnter: (_) => setStates(() => iconClr2 = true), // When mouse enters
+                                            onExit: (_) => setStates(() => iconClr2 = false),
+                                            child: SizedBox(
+                                              height: height * .035,
+                                              width: height * .035,
+                                              child: SvgPicture.asset(
+                                                "assets/svg/linkedin.svg",
+                                                colorFilter: ColorFilter.mode(iconClr2 ? Colors.blue : Colors.white, BlendMode.srcIn),
+                                                semanticsLabel: 'Red dash paths',
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        _launchUrl("https://github.com/Cheswin");
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                        child: MouseRegion(
-                                          onEnter: (_) => setStates(() => iconClr3 = true), // When mouse enters
-                                          onExit: (_) => setStates(() => iconClr3 = false), // When mouse exits
-                                          child: SizedBox(
-                                            height: height * .035,
-                                            width: height * .035,
-                                            child: SvgPicture.asset(
-                                              "assets/svg/git.svg",
-                                              colorFilter: ColorFilter.mode(iconClr3 ? Colors.red : Colors.white, BlendMode.srcIn),
-                                              semanticsLabel: 'Red dash paths',
+                                      GestureDetector(
+                                        onTap: () {
+                                          _launchUrl("https://github.com/Cheswin");
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                          child: MouseRegion(
+                                            onEnter: (_) => setStates(() => iconClr3 = true), // When mouse enters
+                                            onExit: (_) => setStates(() => iconClr3 = false), // When mouse exits
+                                            child: SizedBox(
+                                              height: height * .035,
+                                              width: height * .035,
+                                              child: SvgPicture.asset(
+                                                "assets/svg/git.svg",
+                                                colorFilter: ColorFilter.mode(iconClr3 ? Colors.red : Colors.white, BlendMode.srcIn),
+                                                semanticsLabel: 'Red dash paths',
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            })
-                            ,
-                          )
-                        ],
-                      ),
-                    ],
+                                    ],
+                                  ),
+                                );
+                              })
+                              ,
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
                   )),
             ],
           ),
@@ -379,7 +425,7 @@ class PageMob4 extends StatelessWidget {
         "isLink":true
       },
       {
-        "image":"assets/image/node.png",
+        "image":"assets/image/billingerp.png",
         "content":"Billing ERP is a van sales application that enables salesmen to take orders and track sales details efficiently. It streamlines the sales process by providing real-time order management and sales insights.",
         "name":"Billing ERP ",
         "link":"",
@@ -387,7 +433,7 @@ class PageMob4 extends StatelessWidget {
 
       },
       {
-        "image":"assets/image/node.png",
+        "image":"assets/image/172.png",
         "content":"Arakkal Tap and Order is a hotel application that allows customers to place orders for dine-in, takeaway, or home delivery. It simplifies the ordering process for a seamless dining experience.",
         "name":"Arakkal Tap and Order",
         "link":"",
@@ -395,7 +441,7 @@ class PageMob4 extends StatelessWidget {
 
       },
       {
-        "image":"assets/image/node.png",
+        "image":"assets/image/billingerp.png",
         "content":"360 Solve is an ERP application designed to streamline business operations and enhance efficiency. It provides integrated solutions for managing various business processes.",
         "name":"360 solve",
         "link":"",
@@ -413,136 +459,157 @@ class PageMob4 extends StatelessWidget {
       child: Stack(
         children: [
           SizedBox(
-            child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                SizedBox(height: height*.25,),
-                Padding(
-                  padding: const EdgeInsets.only(right: 0.0),
-                  child: Row(
-                    children: [
-                      Expanded(child: SizedBox()),
-                      Expanded(flex: 1,
-                        child: Container(
-                          // color: Colors.green,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
+            child:  SingleChildScrollView(
+              physics: NeverScrollableScrollPhysics(),
+              child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  SizedBox(height: height*.05,),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 0.0),
+                    child: Row(
+                      children: [
 
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                        Expanded(flex: 1,
+                          child: Container(
+                            // color: Colors.green,
+                            child:  SingleChildScrollView(
+                              physics: NeverScrollableScrollPhysics(),
+                              child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  ShaderMask(
-                                    shaderCallback: (Rect bounds) {
-                                      return LinearGradient(
-                                        colors: [Colors.blue, Colors.purple], // Gradient colors
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                      ).createShader(bounds);
-                                    },
-                                    child: Text('Projects', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .035)),
+
+                                  Padding(
+                                    padding:  EdgeInsets.symmetric(horizontal: 30.0 ,vertical: 10),
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        ShaderMask(
+                                          shaderCallback: (Rect bounds) {
+                                            return LinearGradient(
+                                              colors: [Colors.blue, Colors.purple], // Gradient colors
+                                              begin: Alignment.topLeft,
+                                              end: Alignment.bottomRight,
+                                            ).createShader(bounds);
+                                          },
+                                          child: Text('Projects', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .06)),
+                                        ),
+                                        Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
+                                      ],
+                                    ),
                                   ),
-                                  Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
+
+                                  SizedBox(height:10),
+
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            // color: Colors.red,
+                                            height: height*.35,
+                                            width: width*.8,
+
+                                            child: FlutterCarousel(
+                                              options: FlutterCarouselOptions(
+                                                viewportFraction: .95,
+                                                // height: 400.0,
+                                                autoPlay: true,
+                                                showIndicator: false,
+                                                slideIndicator: CircularSlideIndicator(),
+                                              ),
+                                              items: caro.map((i) {
+                                                return Builder(
+                                                  builder: (BuildContext context) {
+                                                    return Container(
+                                                        width: width*.9,
+                                                        height: height*.15,
+                                                        margin: EdgeInsets.symmetric(horizontal: 5.0),
+                                                        decoration: BoxDecoration(
+                                                            borderRadius: BorderRadius.circular(20),
+                                                            color: Colors.white,
+                                                            gradient: LinearGradient(
+                                                              begin: Alignment.bottomLeft,
+                                                              end:Alignment.centerRight ,
+                                                              colors: [Colors.purple, Colors.blue, Colors.blue,Colors.purple,], // Gradient colors
+                                                            )
+                                                        ),
+                                                        child: Center(child:
+                                                        SingleChildScrollView(
+                                                          physics: NeverScrollableScrollPhysics(),
+                                                          child: Column(
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            children: [
+                                                              // Text(' ${i["name"]}', style: TextStyle(fontSize: 16.0),),
+                                                              Padding(
+                                                                padding: const EdgeInsets.symmetric(vertical: 0.0),
+                                                                child: ProjectCardMob(width: width, height: height, name: "${i["name"]}", image: "${i["image"]}",onTaped: () async {
+                                                                  if(i["isLink"]){
+                                                                    if (!await launchUrl(
+                                                                        Uri.parse(
+                                                                            "${i["link"]}"))) {
+                                                                      throw Exception(
+                                                                          'Could not launch ${i["link"]}');
+                                                                    }
+                                                                  }
+                                                                },),
+                                                              ),
+
+                                                              Padding(
+                                                                padding: const EdgeInsets.all(10.0),
+                                                                child: Text("${i["content"]}",style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: height*.02),),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ))
+                                                    ).animate(
+                                                        effects: [
+                                                          FlipEffect(begin: .03,end: .0)
+                                                          // SlideEffect(begin: Offset(0,-.02),end: Offset(-.01,0 ))
+                                                          // ShimmerEffect(
+                                                          //   colors: [Colors.blue, Colors.purple], // Gradient colors
+                                                          // )
+                                                        ],
+                                                        onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 1)));
+                                                  },
+                                                );
+                                              }).toList(),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+
+
                                 ],
                               ),
-
-                              SizedBox(height:20),
-                              Row(children: [
-
-                                SizedBox(
-                                  height: height*.4,
-                                  width: width*.35,
-
-                                  child: FlutterCarousel(
-                                    options: FlutterCarouselOptions(
-                                      viewportFraction: .95,
-                                      // height: 400.0,
-                                      autoPlay: true,
-                                      showIndicator: false,
-                                      slideIndicator: CircularSlideIndicator(),
-                                    ),
-                                    items: caro.map((i) {
-                                      return Builder(
-                                        builder: (BuildContext context) {
-                                          return Container(
-                                              width: width*.35,
-                                              height: height*.25,
-                                              margin: EdgeInsets.symmetric(horizontal: 5.0),
-                                              decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(20),
-                                                  color: Colors.white,
-                                                  gradient: LinearGradient(
-                                                    begin: Alignment.bottomLeft,
-                                                    end:Alignment.centerRight ,
-                                                    colors: [Colors.purple, Colors.blue, Colors.blue,Colors.purple,], // Gradient colors
-                                                  )
-                                              ),
-                                              child: Center(child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  // Text(' ${i["name"]}', style: TextStyle(fontSize: 16.0),),
-                                                  Padding(
-                                                    padding: const EdgeInsets.symmetric(vertical: 0.0),
-                                                    child: ProjectCard(width: width, height: height, name: "${i["name"]}", image: "${i["image"]}",onTaped: () async {
-                                                      if(i["isLink"]){
-                                                        if (!await launchUrl(
-                                                            Uri.parse(
-                                                                "${i["link"]}"))) {
-                                                          throw Exception(
-                                                              'Could not launch ${i["link"]}');
-                                                        }
-                                                      }
-                                                    },),
-                                                  ),
-
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(10.0),
-                                                    child: Text("${i["content"]}",style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 12),),
-                                                  )
-                                                ],
-                                              ))
-                                          ).animate(
-                                              effects: [
-                                                FlipEffect(begin: .03,end: .0)
-                                                // SlideEffect(begin: Offset(0,-.02),end: Offset(-.01,0 ))
-                                                // ShimmerEffect(
-                                                //   colors: [Colors.blue, Colors.purple], // Gradient colors
-                                                // )
-                                              ],
-                                              onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 1)));
-                                        },
-                                      );
-                                    }).toList(),
-                                  ),
-                                )
-
-                              ],)
-                            ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
 
-              ],
+                ],
+              ),
             ),
           ),
 
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
 
                 children: [
                   Padding(
                     padding:  EdgeInsets.only(left: width*.1),
                     child: Container(
-                      height: height*.5 , // Adjust size as needed
+                      height: height*.3 , // Adjust size as needed
                       // Adjust size as needed
                       child: Lottie.asset('assets/image/project.json'),
                     ),
@@ -582,79 +649,83 @@ class PageMob3 extends StatelessWidget {
             child: Column(
               // crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                SizedBox(height: height*.3,),
+                SizedBox(height: height*.1,),
                 Padding(
-                  padding: const EdgeInsets.only(left: 40.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Row(
                     children: [
                       Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
+                        child:  SingleChildScrollView(
+                          physics: NeverScrollableScrollPhysics(),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
 
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                ShaderMask(
-                                  shaderCallback: (Rect bounds) {
-                                    return LinearGradient(
-                                      colors: [Colors.blue, Colors.purple], // Gradient colors
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                    ).createShader(bounds);
-                                  },
-                                  child: Text('Skills', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .05)),
-                                ),
-                                Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
-                              ],
-                            ),
-                            SizedBox(height: 30,),
-                            Wrap(
-                              spacing: 30,
-                              runSpacing: 10,
-                              children: [
-                                SkillCard(width: width, height: height, name: "Flutter", image: "assets/image/flutter.jpg",),
-                                SkillCard(width: width, height: height, name: "Dart", image: "assets/image/dart.png",),
-                                SkillCard(width: width, height: height, name: "Git", image: "assets/image/git.png",),
-                                SkillCard(width: width, height: height, name: "Firebase", image: "assets/image/firebase.png",),
-                                SkillCard(width: width, height: height, name: "Node", image: "assets/image/node.png",),
-                                SkillCard(width: width, height: height, name: "Adobe XD", image: "assets/image/adobe.png",),
-                                SkillCard(width: width, height: height, name: "Figma", image: "assets/image/figma.png",),
-                                SkillCard(width: width, height: height, name: "Bloc", image: "assets/image/bloc.png",),
-                                SkillCard(width: width, height: height, name: "Provider", image: "assets/image/provider.jpg",),
-                                SkillCard(width: width, height: height, name: "Redux", image: "assets/image/redux.png",),
-                                SkillCard(width: width, height: height, name: "GetX", image: "assets/image/getx.png",),
-                                SkillCard(width: width, height: height, name: "Postman", image: "assets/image/postman.jpg",),
-
-
-
-                              ],),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  ShaderMask(
+                                    shaderCallback: (Rect bounds) {
+                                      return LinearGradient(
+                                        colors: [Colors.blue, Colors.purple], // Gradient colors
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                      ).createShader(bounds);
+                                    },
+                                    child: Text('Skills', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .075)),
+                                  ),
+                                  Icon(Icons.arrow_drop_down,size: width * .075,color: Colors.white,)
+                                ],
+                              ),
+                              SizedBox(height: 30,),
+                              Wrap(
+                                spacing: 20,
+                                runSpacing: 10,
+                                children: [
+                                  SkillCardMob(width: width, height: height, name: "Flutter", image: "assets/image/flutter.jpg",),
+                                  SkillCardMob(width: width, height: height, name: "Dart", image: "assets/image/dart.png",),
+                                  SkillCardMob(width: width, height: height, name: "Git", image: "assets/image/git.png",),
+                                  SkillCardMob(width: width, height: height, name: "Firebase", image: "assets/image/firebase.png",),
+                                  SkillCardMob(width: width, height: height, name: "Node", image: "assets/image/node.png",),
+                                  SkillCardMob(width: width, height: height, name: "Adobe XD", image: "assets/image/adobe.png",),
+                                  SkillCardMob(width: width, height: height, name: "Figma", image: "assets/image/figma.png",),
+                                  SkillCardMob(width: width, height: height, name: "Bloc", image: "assets/image/bloc.png",),
+                                  SkillCardMob(width: width, height: height, name: "Provider", image: "assets/image/provider.jpg",),
+                                  SkillCardMob(width: width, height: height, name: "Redux", image: "assets/image/redux.png",),
+                                  SkillCardMob(width: width, height: height, name: "GetX", image: "assets/image/getx.png",),
+                                  SkillCardMob(width: width, height: height, name: "Postman", image: "assets/image/postman.jpg",),
 
 
-                          ],
+
+                                ],),
+
+
+                            ],
+                          ),
                         ),
-                      ), Expanded(child: SizedBox()),
-
+                      ),
+            
                     ],
                   ),
                 ),
-
+            
               ],),),
 
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                // mainAxisAlignment: MainAxisAlignment.end,
 
                 children: [
                   Padding(
-                    padding:  EdgeInsets.only(right: width*.1),
+                    padding:  EdgeInsets.only(right: 5,),
                     child: Container(
-                      height: height*.4 , // Adjust size as needed
+                      // color: Colors.red,
+                      height: height*.36 , // Adjust size as needed
                       // Adjust size as needed
                       child: Lottie.asset('assets/image/skills.json'),
                     ),
@@ -700,137 +771,140 @@ class PageMob2 extends StatelessWidget {
 
                   Padding(
                     padding: const EdgeInsets.only(right: 0.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                    child:  SingleChildScrollView(
+                      physics: NeverScrollableScrollPhysics(),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
 
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            ShaderMask(
-                              shaderCallback: (Rect bounds) {
-                                return LinearGradient(
-                                  colors: [Colors.blue, Colors.purple], // Gradient colors
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ).createShader(bounds);
-                              },
-                              child: Text('About me', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .07)),
-                            ),
-                            Icon(Icons.arrow_drop_down,size: width * .07,color: Colors.white,)
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            RichText(
-                              text: TextSpan(
-                                text: 'I specialize in building seamless  ',
-                                style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .022),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              ShaderMask(
+                                shaderCallback: (Rect bounds) {
+                                  return LinearGradient(
+                                    colors: [Colors.blue, Colors.purple], // Gradient colors
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ).createShader(bounds);
+                                },
+                                child: Text('About me', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .07)),
                               ),
-                            ),
-                            ShaderMask(
-                              shaderCallback: (Rect bounds) {
-                                return LinearGradient(
-                                  colors: [Colors.blue, Colors.purple], // Gradient colors
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ).createShader(bounds);
-                              },
-                              child: Text('Android ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .023))
-                                  .animate(
-                                // effects: [ShimmerEffect(color: Colors.black)],
-                                  onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 1)))
-                                  .fadeOut(curve: Curves.easeIn),
-                            ),
-                            Text(',', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .022)),
-                            ShaderMask(
-                              shaderCallback: (Rect bounds) {
-                                return LinearGradient(
-                                  colors: [Colors.blue, Colors.purple], // Gradient colors
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ).createShader(bounds);
-                              },
-                              child: Text('iOS ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .023))
-                                  .animate(
-                                // effects: [ShimmerEffect(color: Colors.black)],
-                                  onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 2)))
-                                  .fadeOut(curve: Curves.easeIn),
-                            ),
-                            Text('and ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .022)),
-                            ShaderMask(
-                              shaderCallback: (Rect bounds) {
-                                return LinearGradient(
-                                  colors: [Colors.blue, Colors.purple], // Gradient colors
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ).createShader(bounds);
-                              },
-                              child: Text('Web', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .023))
-                                  .animate(
-                                // effects: [ShimmerEffect(color: Colors.black)],
-                                  onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 1)))
-                                  .fadeOut(curve: Curves.easeIn),
-                            ),
-                            Text(' applications using Flutter.  ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .022)),
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              'With ',
-                              style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .022),
-                            ),
-                            ShaderMask(
-                              shaderCallback: (Rect bounds) {
-                                return LinearGradient(
-                                  colors: [Colors.blue, Colors.purple], // Gradient colors
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                ).createShader(bounds);
-                              },
-                              child: Text('2', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .023)),
-                            ),
-                            Text(' years of experience, I create high-performance and visually appealing apps.',
-                                style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .022)),
-                          ],
-                        ),
-                        SizedBox(height:20),
-                        Row(children: [
-                          // Container(
-                          //   decoration: BoxDecoration(color: Colors.purple),
-                          // child: ,
-                          // )
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10), // Optional rounded edges
-                              border: Border.all(
-                                width: 3, // Border width
-                                color: Colors.transparent, // Required for gradient
-                              ),
-                              gradient: LinearGradient(
-                                colors: [Colors.purple, Colors.blue], // Gradient colors
-                              ),
-                            ),
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
-                                child: Text(
-                                  "Hire Me",
-                                  style: TextStyle(color: Colors.white),
+                              Icon(Icons.arrow_drop_down,size: width * .07,color: Colors.white,)
+                            ],
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              RichText(
+                                text: TextSpan(
+                                  text: 'I specialize in building seamless  ',
+                                  style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .022),
                                 ),
                               ),
-                            ),
-                          )
+                              ShaderMask(
+                                shaderCallback: (Rect bounds) {
+                                  return LinearGradient(
+                                    colors: [Colors.blue, Colors.purple], // Gradient colors
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ).createShader(bounds);
+                                },
+                                child: Text('Android ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .023))
+                                    .animate(
+                                  // effects: [ShimmerEffect(color: Colors.black)],
+                                    onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 1)))
+                                    .fadeOut(curve: Curves.easeIn),
+                              ),
+                              Text(',', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .022)),
+                              ShaderMask(
+                                shaderCallback: (Rect bounds) {
+                                  return LinearGradient(
+                                    colors: [Colors.blue, Colors.purple], // Gradient colors
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ).createShader(bounds);
+                                },
+                                child: Text('iOS ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .023))
+                                    .animate(
+                                  // effects: [ShimmerEffect(color: Colors.black)],
+                                    onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 2)))
+                                    .fadeOut(curve: Curves.easeIn),
+                              ),
+                              Text('and ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .022)),
+                              ShaderMask(
+                                shaderCallback: (Rect bounds) {
+                                  return LinearGradient(
+                                    colors: [Colors.blue, Colors.purple], // Gradient colors
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ).createShader(bounds);
+                                },
+                                child: Text('Web', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .023))
+                                    .animate(
+                                  // effects: [ShimmerEffect(color: Colors.black)],
+                                    onPlay: (controller) => controller.repeat(reverse: true, period: Duration(seconds: 1)))
+                                    .fadeOut(curve: Curves.easeIn),
+                              ),
+                              Text(' applications using Flutter.  ', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .022)),
+                            ],
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'With ',
+                                style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .022),
+                              ),
+                              ShaderMask(
+                                shaderCallback: (Rect bounds) {
+                                  return LinearGradient(
+                                    colors: [Colors.blue, Colors.purple], // Gradient colors
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ).createShader(bounds);
+                                },
+                                child: Text('2', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .023)),
+                              ),
+                              Text(' years of experience, I create high-performance and visually appealing apps.',
+                                  style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .022)),
+                            ],
+                          ),
+                          SizedBox(height:20),
+                          Row(children: [
+                            // Container(
+                            //   decoration: BoxDecoration(color: Colors.purple),
+                            // child: ,
+                            // )
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10), // Optional rounded edges
+                                border: Border.all(
+                                  width: 3, // Border width
+                                  color: Colors.transparent, // Required for gradient
+                                ),
+                                gradient: LinearGradient(
+                                  colors: [Colors.purple, Colors.blue], // Gradient colors
+                                ),
+                              ),
+                              child: Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
+                                  child: Text(
+                                    "Hire Me",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            )
 
-                        ],)
-                      ],
+                          ],)
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(height: height*.2,),
@@ -860,8 +934,8 @@ class PageMob2 extends StatelessWidget {
   }
 }
 
-class SkillCard extends StatelessWidget {
-  const SkillCard({
+class SkillCardMob extends StatelessWidget {
+  const SkillCardMob({
     super.key,
     required this.width,
     required this.height, required this.name, required this.image,
@@ -877,19 +951,19 @@ class SkillCard extends StatelessWidget {
     return Column(
       children: [
         Container(
-          width: width*.04,
+          width: width*.13,
           height: height*.07,
           decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage(image),fit: BoxFit.contain),
-              color: Colors.white,borderRadius: BorderRadius.circular(15)),),
-        Text(name,style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .008),)
+              image: DecorationImage(image: AssetImage(image),fit: BoxFit.fill),
+              color: Colors.white,borderRadius: BorderRadius.circular(12)),),
+        Text(name,style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .02),)
       ],
     );
   }
 }
 
-class ProjectCard extends StatelessWidget {
-  const ProjectCard({
+class ProjectCardMob extends StatelessWidget {
+  const ProjectCardMob({
     super.key,
     required this.width,
     required this.height, required this.name, required this.image, this.onTaped,
@@ -907,13 +981,13 @@ class ProjectCard extends StatelessWidget {
         GestureDetector(
           onTap: onTaped,
           child: Container(
-            width: width*.045,
+            width: width*.15,
             height: height*.075,
             decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(image),fit: BoxFit.contain),
+                image: DecorationImage(image: AssetImage(image),fit: BoxFit.cover),
                 color: Colors.white,borderRadius: BorderRadius.circular(15)),),
         ),
-        Text(name,style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .008),)
+        Text(name,style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .02),)
       ],
     );
   }
@@ -1028,145 +1102,137 @@ class PageMob5 extends StatelessWidget {
       child: Stack(
         children: [
           SizedBox(
-            child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.end,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: height*.3,),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                          child: Padding(padding: EdgeInsets.only(left: width*.1),
-                            child: StatefulBuilder(
-                                builder: (context,contactState) {
-                                  return Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
+                StatefulBuilder(
+                    builder: (context,contactState) {
+                      return  SingleChildScrollView(
+                        physics: NeverScrollableScrollPhysics(),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
 
-                                      Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
-                                          ShaderMask(
-                                            shaderCallback: (Rect bounds) {
-                                              return LinearGradient(
-                                                colors: [Colors.blue, Colors.purple], // Gradient colors
-                                                begin: Alignment.topLeft,
-                                                end: Alignment.bottomRight,
-                                              ).createShader(bounds);
-                                            },
-                                            child: Text('Contact', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .05)),
+                              Row(
+                                // crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  ShaderMask(
+                                    shaderCallback: (Rect bounds) {
+                                      return LinearGradient(
+                                        colors: [Colors.blue, Colors.purple], // Gradient colors
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                      ).createShader(bounds);
+                                    },
+                                    child: Text('Contact', style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: Colors.white, fontSize: width * .05)),
+                                  ),
+                                  Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 10),
+                                child: Row(children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 8.0),
+                                    child: Icon(Icons.phone_android_outlined,color: Colors.white,),
+                                  ),MouseRegion(
+                                      onEnter: (_) => contactState(() => contact1 = true), // When mouse enters
+                                      onExit: (_) => contactState(() => contact1 = false),child: GestureDetector(onTap: () async {
+                                    final Uri dialUri = Uri(
+                                        scheme: 'tel',
+                                        path: '+917034489417'
+                                      // Replace with the specific phone number
+                                    );
+
+                                    if (await canLaunchUrl(dialUri)) {
+                                      await launchUrl(dialUri);
+                                    } else {
+                                      throw "Could not launch dialer";
+                                    }
+                                  },child: Text("+91 7034489417",style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color:contact1?Colors.blue: Colors.white, fontSize: width * .025),)))
+                                ],),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 10),
+                                child: Row(children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 8.0),
+                                    child: Icon(Icons.email,color: Colors.white,),
+                                  ),GestureDetector(
+                                      onTap: () async {
+                                        final Uri emailUri = Uri(
+                                          scheme: 'mailto',
+                                          path: 'cheswin1999@gmail.com', // Replace with your specific email ID
+                                        );
+
+                                        if (await canLaunchUrl(emailUri)) {
+                                          await launchUrl(emailUri);
+                                        } else {
+                                          throw "Could not launch email";
+                                        }
+                                      },
+                                      child:MouseRegion(
+                                          onEnter: (_) => contactState(() => contact2 = true), // When mouse enters
+                                          onExit: (_) => contactState(() => contact2 = false),child: Text("cheswin1999@gmail.com",style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color:contact2?Colors.purple: Colors.white, fontSize: width * .025),)))
+                                ],),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 10),
+                                child: Row(children: [
+                                  GestureDetector(
+                                    onTap: () async {
+                                      String url = "https://wa.me/+917034489417?text=${Uri.encodeComponent("Hello, Cheswin")}";
+
+                                      if (await canLaunchUrl(Uri.parse(url))) {
+                                        await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+                                      } else {
+                                        throw "Could not launch WhatsApp";
+                                      }
+                                    },
+                                    child: Container(
+                                        decoration: BoxDecoration(color: Colors.green,borderRadius: BorderRadius.circular(15)),
+                                        child:
+                                        Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Row(
+                                            children: [
+                                              Icon(CupertinoIcons.chat_bubble,color: Colors.white,),
+                                              MouseRegion(
+                                                  onEnter: (_) => contactState(() => contact3 = true), // When mouse enters
+                                                  onExit: (_) => contactState(() => contact3 = false),
+                                                  child: Text(" WhatsApp",style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: contact3?Colors.blue: Colors.white, fontSize: width * .02),)),
+                                            ],
                                           ),
-                                          Icon(Icons.arrow_drop_down,size: width * .05,color: Colors.white,)
-                                        ],
-                                      ),
-                                      SizedBox(height: 30,),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Row(children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(right: 8.0),
-                                            child: Icon(Icons.phone_android_outlined,color: Colors.white,),
-                                          ),MouseRegion(
-                                              onEnter: (_) => contactState(() => contact1 = true), // When mouse enters
-                                              onExit: (_) => contactState(() => contact1 = false),child: GestureDetector(onTap: () async {
-                                            final Uri dialUri = Uri(
-                                                scheme: 'tel',
-                                                path: '+917034489417'
-                                              // Replace with the specific phone number
-                                            );
+                                        )
 
-                                            if (await canLaunchUrl(dialUri)) {
-                                              await launchUrl(dialUri);
-                                            } else {
-                                              throw "Could not launch dialer";
-                                            }
-                                          },child: Text("+91 7034489417",style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color:contact1?Colors.blue: Colors.white, fontSize: width * .01),)))
-                                        ],),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Row(children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(right: 8.0),
-                                            child: Icon(Icons.email,color: Colors.white,),
-                                          ),GestureDetector(
-                                              onTap: () async {
-                                                final Uri emailUri = Uri(
-                                                  scheme: 'mailto',
-                                                  path: 'cheswin1999@gmail.com', // Replace with your specific email ID
-                                                );
+                                    ),
+                                  )],),
+                              )  ,
 
-                                                if (await canLaunchUrl(emailUri)) {
-                                                  await launchUrl(emailUri);
-                                                } else {
-                                                  throw "Could not launch email";
-                                                }
-                                              },
-                                              child:MouseRegion(
-                                                  onEnter: (_) => contactState(() => contact2 = true), // When mouse enters
-                                                  onExit: (_) => contactState(() => contact2 = false),child: Text("cheswin1999@gmail.com",style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color:contact2?Colors.purple: Colors.white, fontSize: width * .01),)))
-                                        ],),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Row(children: [
-                                          GestureDetector(
-                                            onTap: () async {
-                                              String url = "https://wa.me/+917034489417?text=${Uri.encodeComponent("Hello, Cheswin")}";
-
-                                              if (await canLaunchUrl(Uri.parse(url))) {
-                                                await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-                                              } else {
-                                                throw "Could not launch WhatsApp";
-                                              }
-                                            },
-                                            child: Container(
-                                                decoration: BoxDecoration(color: Colors.green,borderRadius: BorderRadius.circular(15)),
-                                                child:
-                                                Padding(
-                                                  padding: const EdgeInsets.all(10.0),
-                                                  child: Row(
-                                                    children: [
-                                                      Icon(CupertinoIcons.chat_bubble,color: Colors.white,),
-                                                      MouseRegion(
-                                                          onEnter: (_) => contactState(() => contact3 = true), // When mouse enters
-                                                          onExit: (_) => contactState(() => contact3 = false),
-                                                          child: Text(" WhatsApp",style: GoogleFonts.spaceGrotesk(fontWeight: FontWeight.bold, color: contact3?Colors.blue: Colors.white, fontSize: width * .01),)),
-                                                    ],
-                                                  ),
-                                                )
-
-                                            ),
-                                          )],),
-                                      )
-                                    ],
-                                  );
-                                }
-                            ),
-                          )
-                      ), Expanded(child: SizedBox()),
-
-                    ],
-                  ),
+                            ],
+                          ),
+                      )
+                      ;
+                    }
                 ),
 
-              ],),),
-
+              ],
+            ),),
+//image
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
 
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: width*.2),
                     child: Container(
-                      height: height*.4 , // Adjust size as needed
+                      height: height*.35 , // Adjust size as needed
                       // Adjust size as needed
                       child: Lottie.asset('assets/image/contac.json'),
                     ),
